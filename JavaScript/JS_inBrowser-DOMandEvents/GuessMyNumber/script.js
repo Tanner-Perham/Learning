@@ -21,6 +21,7 @@ const generateSecretNumber = function () {
 };
 
 const secretNumber = generateSecretNumber();
+let score = 20;
 
 const submitNumber = function () {
   let guess = Number(document.querySelector(".guess").value);
@@ -35,10 +36,14 @@ const submitNumber = function () {
     document.querySelector(
       ".message"
     ).textContent = `Number is greater than ${guess}`;
+    score--;
+    document.querySelector(".score").textContent = score;
   } else if (guess > secretNumber) {
     document.querySelector(
       ".message"
     ).textContent = `Number is less than ${guess}`;
+    score--;
+    document.querySelector(".score").textContent = score;
   }
 };
 
