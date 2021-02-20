@@ -16,12 +16,27 @@ console.log(document.querySelector(".guess").value);
 //   console.log(document.querySelector(".guess").value);
 // });
 
+let secretNumber, score;
+
 const generateSecretNumber = function () {
   return Math.trunc(Math.random() * 20) + 1;
 };
 
-const secretNumber = generateSecretNumber();
-let score = 20;
+const playAgain = function () {
+  secretNumber = generateSecretNumber();
+  score = 20;
+
+  document.querySelector(".score").textContent = score;
+
+  document.querySelector("body").style.backgroundColor = "#222";
+  document.querySelector(".message").textContent = "Start guessing...";
+
+  document.querySelector(".number").style.width = "15rem";
+  document.querySelector(".number").textContent = "?";
+  console.log(secretNumber);
+};
+
+playAgain();
 
 const submitNumber = function () {
   let guess = Number(document.querySelector(".guess").value);
@@ -52,4 +67,5 @@ const submitNumber = function () {
 };
 
 document.querySelector(".check").addEventListener("click", submitNumber);
+document.querySelector(".again").addEventListener("click", playAgain);
 console.log(secretNumber);
