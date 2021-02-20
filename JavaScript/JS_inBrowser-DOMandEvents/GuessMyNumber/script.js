@@ -32,6 +32,10 @@ const submitNumber = function () {
   }
   if (guess === secretNumber) {
     document.querySelector(".message").textContent = "You got it!!!";
+    document.querySelector("body").style.backgroundColor = "#60b347";
+
+    document.querySelector(".number").style.width = "30rem";
+    document.querySelector(".number").textContent = secretNumber;
   } else if (guess < secretNumber) {
     document.querySelector(
       ".message"
