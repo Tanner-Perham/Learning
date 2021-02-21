@@ -18,6 +18,7 @@ console.log(document.querySelector(".guess").value);
 
 let secretNumber, score;
 let highScore = 0;
+let guesses = [];
 
 const generateSecretNumber = function () {
   return Math.trunc(Math.random() * 20) + 1;
@@ -26,8 +27,10 @@ const generateSecretNumber = function () {
 const playAgain = function () {
   secretNumber = generateSecretNumber();
   score = 20;
+  guesses = [];
 
   document.querySelector(".score").textContent = score;
+  document.querySelector(".guesses").textContent = "";
 
   document.querySelector("body").style.backgroundColor = "#222";
   document.querySelector(".message").textContent = "Start guessing...";
@@ -77,7 +80,11 @@ const submitNumber = function () {
         ).textContent = `Number is less than ${guess}`;
         score--;
       }
+      guesses.push(guess);
       document.querySelector(".score").textContent = score;
+      document.querySelector(
+        ".guesses"
+      ).textContent = `You have guessed: ${guesses}`;
     } else {
       document.querySelector(".message").textContent =
         "You lost the game - Try again!";
