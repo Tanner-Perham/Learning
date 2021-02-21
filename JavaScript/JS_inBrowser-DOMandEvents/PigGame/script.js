@@ -45,7 +45,12 @@ const rollDice = function () {
   displayDice(diceValue);
 };
 
+const hold = function () {
+  passTurn();
+};
+
 resetGame();
 
 btnNewGame.addEventListener("click", resetGame);
 btnDiceRoll.addEventListener("click", rollDice);
+btnHold.addEventListener("click", hold);
