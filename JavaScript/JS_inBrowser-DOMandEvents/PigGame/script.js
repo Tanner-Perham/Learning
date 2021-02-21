@@ -47,7 +47,5 @@ const rollDice = function () {
 
 resetGame();
 
-console.log(dice);
-
 btnNewGame.addEventListener("click", resetGame);
 btnDiceRoll.addEventListener("click", rollDice);
