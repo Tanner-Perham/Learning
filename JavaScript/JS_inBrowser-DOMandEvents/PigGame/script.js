@@ -3,6 +3,7 @@
 const btnNewGame = document.querySelector(".btn--new");
 const btnDiceRoll = document.querySelector(".btn--roll");
 const btnHold = document.querySelector(".btn--hold");
+const dice = document.querySelector(".dice");
 const players = document.querySelectorAll(".player");
 
 for (let i = 0; i < players.length; i++) {
@@ -15,6 +16,7 @@ const resetGame = function () {
   let player2Score = 0;
   let player1Current = 0;
   let player2Current = 0;
+  let diceValue;
   console.log(
     currentPlayer,
     player1Score,
@@ -23,6 +25,7 @@ const resetGame = function () {
     player2Current
   );
 };
+
 const passTurn = function () {
   for (let i = 0; i < players.length; i++) {
     if (players[i].classList.contains("player--active")) {
@@ -33,6 +36,18 @@ const passTurn = function () {
   }
 };
 
+const displayDice = function (value) {
+  dice.setAttribute("src", `dice-${value}.png`);
+};
+
+const rollDice = function () {
+  let diceValue = Math.trunc(Math.random() * 6) + 1;
+  displayDice(diceValue);
+};
+
 resetGame();
 
+console.log(dice);
+
 btnNewGame.addEventListener("click", resetGame);
+btnDiceRoll.addEventListener("click", rollDice);
