@@ -72,7 +72,7 @@ const hold = function () {
   updateCurrent();
   updateScore(1);
   for (let i = 0; i < players.length; i++) {
-    if (players[i].querySelector(".current-score").textContent > 100) {
+    if (players[i].querySelector(".current-score").textContent >= 100) {
       let playerName = players[i].querySelector(".name").textContent;
       btnDiceRoll.textContent = `${playerName} Wins!!!`;
     }
