@@ -17,6 +17,7 @@ console.log(document.querySelector(".guess").value);
 // });
 
 let secretNumber, score;
+let highScore = 0;
 
 const generateSecretNumber = function () {
   return Math.trunc(Math.random() * 20) + 1;
@@ -41,23 +42,34 @@ playAgain();
 const submitNumber = function () {
   let guess = Number(document.querySelector(".guess").value);
 
+  //   No guess
   if (!guess) {
     document.querySelector(".message").textContent = "No number";
     console.log("Need to guess a number");
   }
+  //   Correct guess
   if (guess === secretNumber) {
     document.querySelector(".message").textContent = "You got it!!!";
     document.querySelector("body").style.backgroundColor = "#60b347";
 
     document.querySelector(".number").style.width = "30rem";
     document.querySelector(".number").textContent = secretNumber;
-  } else if (guess < secretNumber) {
+
+    if (highScore < score) {
+      highScore = score;
+      document.querySelector(".highscore").textContent = highScore;
+    }
+  }
+  //   Low guess
+  else if (guess < secretNumber) {
     document.querySelector(
       ".message"
     ).textContent = `Number is greater than ${guess}`;
     score--;
     document.querySelector(".score").textContent = score;
-  } else if (guess > secretNumber) {
+  }
+  //   High guess
+  else if (guess > secretNumber) {
     document.querySelector(
       ".message"
     ).textContent = `Number is less than ${guess}`;
