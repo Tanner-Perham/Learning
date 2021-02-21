@@ -23,7 +23,16 @@ const resetGame = function () {
     player2Current
   );
 };
-const passTurn = function () {};
+const passTurn = function () {
+  for (let i = 0; i < players.length; i++) {
+    if (players[i].classList.contains("player--active")) {
+      players[i].classList.remove("player--active");
+    } else {
+      players[i].classList.add("player--active");
+    }
+  }
+};
 
 resetGame();
+
 btnNewGame.addEventListener("click", resetGame);
