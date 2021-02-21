@@ -37,13 +37,9 @@ const passTurn = function () {
   }
 };
 
-const displayDice = function (value) {
-  dice.setAttribute("src", `dice-${value}.png`);
-};
-
 const rollDice = function () {
   let diceValue = Math.trunc(Math.random() * 6) + 1;
-  displayDice(diceValue);
+  dice.setAttribute("src", `dice-${diceValue}.png`);
 };
 
 const hold = function () {
