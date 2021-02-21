@@ -17,13 +17,14 @@ const resetGame = function () {
   let player1Current = 0;
   let player2Current = 0;
   let diceValue;
-  console.log(
-    currentPlayer,
-    player1Score,
-    player2Score,
-    player1Current,
-    player2Current
-  );
+
+  for (let i = 0; i < players.length; i++) {
+    players[i].querySelector(".score").textContent = 0;
+    players[i].querySelector(".current-score").textContent = 0;
+  }
+
+  players[0].classList.add("player--active");
+  players[1].classList.remove("player--active");
 };
 
 const passTurn = function () {
