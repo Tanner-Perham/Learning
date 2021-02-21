@@ -60,21 +60,28 @@ const submitNumber = function () {
       document.querySelector(".highscore").textContent = highScore;
     }
   }
-  //   Low guess
-  else if (guess < secretNumber) {
-    document.querySelector(
-      ".message"
-    ).textContent = `Number is greater than ${guess}`;
-    score--;
-    document.querySelector(".score").textContent = score;
-  }
-  //   High guess
-  else if (guess > secretNumber) {
-    document.querySelector(
-      ".message"
-    ).textContent = `Number is less than ${guess}`;
-    score--;
-    document.querySelector(".score").textContent = score;
+  //   Wrong guess
+  else if (guess !== secretNumber) {
+    if (score > 1) {
+      if (guess < secretNumber) {
+        //   Low guess
+        document.querySelector(
+          ".message"
+        ).textContent = `Number is greater than ${guess}`;
+        score--;
+      }
+      //   High guess
+      else if (guess > secretNumber) {
+        document.querySelector(
+          ".message"
+        ).textContent = `Number is less than ${guess}`;
+        score--;
+      }
+      document.querySelector(".score").textContent = score;
+    } else {
+      document.querySelector(".message").textContent =
+        "You lost the game - Try again!";
+    }
   }
 };
 
