@@ -24,6 +24,10 @@ const generateSecretNumber = function () {
   return Math.trunc(Math.random() * 20) + 1;
 };
 
+const displayMessage = function (message) {
+  document.querySelector(".message").textContent = message;
+};
+
 const playAgain = function () {
   secretNumber = generateSecretNumber();
   score = 20;
@@ -33,26 +37,24 @@ const playAgain = function () {
   document.querySelector(".guesses").textContent = "";
 
   document.querySelector("body").style.backgroundColor = "#222";
-  document.querySelector(".message").textContent = "Start guessing...";
+  displayMessage("Start guessing...");
   document.querySelector(".guess").value = "";
   document.querySelector(".number").style.width = "15rem";
   document.querySelector(".number").textContent = "?";
   console.log(secretNumber);
 };
 
-playAgain();
-
 const submitNumber = function () {
   let guess = Number(document.querySelector(".guess").value);
 
   //   No guess
   if (!guess) {
-    document.querySelector(".message").textContent = "No number";
+    displayMessage("No number");
     console.log("Need to guess a number");
   }
   //   Correct guess
   if (guess === secretNumber) {
-    document.querySelector(".message").textContent = "You got it!!!";
+    displayMessage("You got it!!!");
     document.querySelector("body").style.backgroundColor = "#60b347";
 
     document.querySelector(".number").style.width = "30rem";
@@ -68,16 +70,12 @@ const submitNumber = function () {
     if (score > 1) {
       if (guess < secretNumber) {
         //   Low guess
-        document.querySelector(
-          ".message"
-        ).textContent = `Number is greater than ${guess}`;
+        displayMessage(`Number is greater than ${guess}`);
         score--;
       }
       //   High guess
       else if (guess > secretNumber) {
-        document.querySelector(
-          ".message"
-        ).textContent = `Number is less than ${guess}`;
+        displayMessage(`Number is less than ${guess}`);
         score--;
       }
       guesses.push(guess);
@@ -86,12 +84,12 @@ const submitNumber = function () {
         ".guesses"
       ).textContent = `You have guessed: ${guesses}`;
     } else {
-      document.querySelector(".message").textContent =
-        "You lost the game - Try again!";
+      displayMessage("You lost the game - Try again!");
     }
   }
 };
 
+playAgain();
 document.querySelector(".check").addEventListener("click", submitNumber);
 document.querySelector(".again").addEventListener("click", playAgain);
 console.log(secretNumber);
