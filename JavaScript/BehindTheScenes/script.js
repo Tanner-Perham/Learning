@@ -33,3 +33,19 @@ ceily.calcAge = tanner.calcAge;
 console.log(ceily);
 
 ceily.calcAge();
+
+// Copying Objects
+
+const person = {
+  firstName: "John",
+  lastName: "Smith",
+  age: 25,
+};
+
+const tanner1 = Object.assign({}, person);
+tanner1.firstName = "Tanner";
+tanner1.lastName = "Perham";
+tanner1.age = 27;
+
+console.log(person);
+console.log(tanner1);
