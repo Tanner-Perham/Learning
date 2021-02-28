@@ -64,3 +64,11 @@ console.log(letters);
 
 // Can copy objects with spread also!
 const newRestaurant = { ...restaurant };
+
+// Nullish ?? operator
+
+restaurant.numberOfGuests = 0;
+
+// Nullish: null and undefined (NOT 0 or '')
+const guests = restaurant.numberOfGuests ?? 10;
+console.log(guests);
