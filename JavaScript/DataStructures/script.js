@@ -28,6 +28,22 @@ const restaurant = {
   },
 };
 
+const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+
+for (const item of menu) console.log(item);
+
+for (const [i, el] of menu.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+console.log(...menu.entries());
+
+const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
+
+for (const day of days) {
+  restaurant.openingHours[day] && console.log(`Open on ${day}`);
+}
+
 /*
 // Destructuring arrays
 
@@ -117,6 +133,7 @@ const game = {
   },
 };
 
+/*
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
 
@@ -137,3 +154,4 @@ const printGoals = function (...players) {
 
 team1 < team2 && console.log(`Team 1 is more likely to win`);
 team1 > team2 && console.log(`Team 2 is more likely to win`);
+*/
