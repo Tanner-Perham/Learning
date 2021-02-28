@@ -27,3 +27,40 @@ const restaurant = {
     },
   },
 };
+
+// Destructuring arrays
+
+// Destructuring objects
+
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+const { menu1 = [], starterMenu: starters = [] } = restaurant;
+console.log(menu1, starters);
+
+// Spread operator
+console.log(...starters);
+
+const newMenu = [...restaurant.mainMenu, "Gnocci"];
+
+console.log(newMenu);
+
+const mainMenuCopy = [...restaurant.mainMenu];
+
+const menu = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu);
+
+const str = "Tanner";
+const letters = [...str];
+
+console.log(letters);
+
+// Can copy objects with spread also!
+const newRestaurant = { ...restaurant };
