@@ -183,6 +183,13 @@ const uniqueSet = new Set([...listOfIDs]);
 
 console.log(uniqueSet);
 
+for (const l of [..."hello"]) uniqueSet.add(l);
+uniqueSet.delete("1234");
+console.log(uniqueSet);
+uniqueSet.clear();
+console.log(uniqueSet);
+for (const l of [..."ashtenruhhlm"]) uniqueSet.add(l);
+
 /*
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
