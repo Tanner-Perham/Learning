@@ -28,6 +28,7 @@ const restaurant = {
   },
 };
 
+/*
 const menu = [...restaurant.starterMenu, ...restaurant.mainMenu];
 
 for (const item of menu) console.log(item);
@@ -41,8 +42,15 @@ console.log(...menu.entries());
 const days = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 for (const day of days) {
-  restaurant.openingHours[day] && console.log(`Open on ${day}`);
+  restaurant.openingHours?.[day] && console.log(`Open on ${day}`);
 }
+
+const openDays = Object.entries(restaurant.openingHours);
+for (const [day, { open: openTime, close: closeTime }] of openDays) {
+  console.log(`On ${day} open ${openTime} to ${closeTime}`);
+}
+console.log(Object.entries(restaurant.openingHours));
+*/
 
 /*
 // Destructuring arrays
