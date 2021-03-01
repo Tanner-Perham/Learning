@@ -190,6 +190,9 @@ uniqueSet.clear();
 console.log(uniqueSet);
 for (const l of [..."ashtenruhhlm"]) uniqueSet.add(l);
 
+const test = [...uniqueSet];
+console.log(test);
+
 /*
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
