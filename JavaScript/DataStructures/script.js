@@ -177,6 +177,12 @@ for (const [team, value] of Object.entries(odds)) {
 
 // Playing around with sets
 
+const listOfIDs = ["15672", "1234", "15432", "1234", "1234"];
+
+const uniqueSet = new Set([...listOfIDs]);
+
+console.log(uniqueSet);
+
 /*
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
