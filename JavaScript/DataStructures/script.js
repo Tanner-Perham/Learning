@@ -141,6 +141,42 @@ const game = {
   },
 };
 
+// Coding challenge #2
+
+// Q1
+const goals = game.scored;
+// console.log(goals);
+for (const [num, kicker] of goals.entries())
+  console.log(`Goal ${num + 1} kicked by: ${kicker}`);
+
+// Q2
+const odds = game.odds;
+console.log(odds);
+
+let sum = 0;
+for (const x of Object.values(odds)) {
+  console.log(x);
+  sum += x;
+}
+console.log(sum / Object.values(odds).length);
+
+// Q3
+// const { team1, x: draw, team2 } = odds;
+// console.log(`Odd of Draw: ${draw}`);
+// console.log(`Odd of Victory ${game.team2}: ${team2}`);
+// console.log(`Odd of Victory ${game.team1}: ${team1}`);
+
+const { team1: team1Name, team2: team2Name } = game;
+// for (const )
+console.log(odds);
+for (const [team, value] of Object.entries(odds)) {
+  const teamStr =
+    team === "x" ? `draw: ${value}` : `victory ${game[team]}: ${value}`;
+  console.log(`Odds of ${teamStr}`);
+}
+
+// Playing around with sets
+
 /*
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
