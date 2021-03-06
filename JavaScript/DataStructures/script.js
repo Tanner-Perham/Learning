@@ -193,6 +193,25 @@ for (const l of [..."ashtenruhhlm"]) uniqueSet.add(l);
 const test = [...uniqueSet];
 console.log(test);
 
+const question = new Map([
+  ["question", "What is the best programming language?"],
+  [1, "C"],
+  [2, "Java"],
+  [3, "JavaScript"],
+  ["correct", 3],
+  [true, "You are correct"],
+  [false, "Try again"],
+]);
+
+console.log(question.get("question"));
+for (const [key, value] of question) {
+  if (typeof key === "number") console.log(`Answer ${key}: ${value}`);
+}
+
+const answer = Number(prompt("Input the number for your answer"));
+
+console.log(question.get(answer === question.get("correct")));
+
 /*
 const [players1, players2] = game.players;
 const [gk, ...fieldPlayers] = players1;
