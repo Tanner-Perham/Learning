@@ -215,3 +215,42 @@ const printGoals = function (...players) {
 team1 < team2 && console.log(`Team 1 is more likely to win`);
 team1 > team2 && console.log(`Team 2 is more likely to win`);
 */
+
+/*
+// Coding Challenge #3
+
+const gameEvents = new Map([
+  [17, "⚽️ GOAL"],
+  [36, "🔁 Substitution"],
+  [47, "⚽️ GOAL"],
+  [61, "🔁 Substitution"],
+  [64, "🔶 Yellow card"],
+  [69, "🔴 Red card"],
+  [70, "🔁 Substitution"],
+  [72, "🔁 Substitution"],
+  [76, "⚽️ GOAL"],
+  [80, "⚽️ GOAL"],
+  [92, "🔶 Yellow card"],
+]);
+
+const events = [...new Set(gameEvents.values())];
+
+console.log(events);
+
+gameEvents.delete(64);
+console.log(gameEvents);
+
+const diff = function (...numbers) {
+  gameLength = 90;
+};
+
+const avg = function (...numbers) {
+  sum = 0;
+  for (let i = 0; i < numbers.length; i++) {
+    sum += numbers[i];
+  }
+  return sum / numbers.length;
+};
+
+console.log(90 / gameEvents.size);
+*/
