@@ -1,5 +1,17 @@
 "use strict";
 
+const greet = function (greeting) {
+  return function (name) {
+    console.log(`${greeting} ${name}`);
+  };
+};
+
+const greeterHey = greet("Hey");
+greeterHey("Tanner");
+
+greet("Hello")("Tanner");
+
+/*
 const oneWord = function (str) {
   return str.replace(/ /g, "").toLowerCase();
 };
