@@ -1,5 +1,56 @@
 "use strict";
 
+// Coding Challenge #1
+
+const poll = {
+  question: "What is your favourite programming language?",
+  options: ["0: JavaScript", "1: Python", "2: Rust", "3: C++"],
+  answers: new Array(4).fill(0),
+
+  registerNewAnswer() {
+    const response = Number(
+      prompt(
+        `${this.question}\n${this.options.join("\n")}\n(Write option number)`
+      )
+    );
+    if (response >= 0 && response <= 3) {
+      this.answers[response]++;
+      console.log(this);
+      pollDisplay("String");
+    } else {
+      alert(`Try again`);
+    }
+  },
+};
+
+const displayResults = function (type = "Array") {
+  const results = this.answers;
+  if (type !== "Array" && type !== "String")
+    console.log(
+      `ERROR: ${type} | ${displayResults.name} options are Array or String`
+    );
+  else {
+    if (type === "Array") {
+      console.log(results);
+    } else if (type === "String") {
+      console.log(`Poll results are ${[...results]}`);
+    }
+  }
+};
+
+const pollDisplay = displayResults.bind(poll);
+
+document
+  .querySelector(".poll")
+  .addEventListener("click", poll.registerNewAnswer.bind(poll));
+
+const bonus1 = [5, 2, 3];
+const bonus2 = [1, 5, 3, 9, 6, 1];
+
+displayResults.call({ answers: bonus1 }, "String");
+displayResults.call({ answers: bonus2 }, "String");
+
+/*
 const addTax = function (rate) {
   return function (value) {
     return value + value * rate;
