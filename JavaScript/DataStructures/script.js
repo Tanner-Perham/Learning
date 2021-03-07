@@ -4,6 +4,44 @@
 const flights =
   "_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30";
 
+// More string methods practice
+
+const unpackFlights = function (flightData) {
+  flightData = flightData + "";
+  const lines = flightData.toLowerCase().split("+");
+  const output = [];
+  for (const line of lines) {
+    const [rawType, rawFrom, rawTo, rawTime] = line.split(";");
+
+    // Formatting TYPE of event (Departure || Arrival)
+    const typeArr = rawType.replaceAll("_", " ").trim().split(" ");
+    for (let t = 0; t < typeArr.length; t++) {
+      typeArr[t] = typeArr[t].slice(0, 1).toUpperCase() + typeArr[t].slice(1);
+    }
+    const type = typeArr.join(" ");
+
+    // Formatting FROM and TO names
+    const loc = [
+      rawFrom.slice(0, 3).toUpperCase(),
+      rawTo.slice(0, 3).toUpperCase(),
+    ];
+
+    // Formatting TIME data
+    const [timeHr, timeM] = rawTime.split(":");
+    const time = `${timeHr}h${timeM}`;
+
+    output.push([type, loc, time]);
+  }
+  for (const o of output) {
+    const [type, loc, time] = o;
+    console.log(
+      `${type} from ${loc[0]} to ${loc[1]} (${time})`.padStart(60, " ")
+    );
+  }
+};
+
+unpackFlights(flights);
+
 // Data needed for first part of the section
 const restaurant = {
   name: "Classico Italiano",
@@ -141,6 +179,7 @@ const game = {
   },
 };
 
+/*
 // Coding challenge #2
 
 // Q1
@@ -272,4 +311,28 @@ const avg = function (...numbers) {
 };
 
 console.log(90 / gameEvents.size);
+*/
+
+// const testString = "aaa vvvv".replaceAll("a", "v");
+// console.log(testString);
+
+/*
+//  Coding Challenge #4
+
+// Setup
+document.body.append(document.createElement("textarea"));
+document.body.append(document.createElement("button"));
+
+document.querySelector("button").addEventListener("click", function () {
+  const input = document.querySelector("textarea").value + "";
+  const entries = input.split("\n");
+  const output = [];
+  for (const e of entries) {
+    const fragments = e.trim().toLowerCase().split("_");
+    fragments[1] =
+      fragments[1].slice(0, 1).toUpperCase() + fragments[1].slice(1);
+    output.push(fragments.join(""));
+  }
+  document.querySelector("textarea").value = output.join("\n");
+});
 */
