@@ -1,5 +1,15 @@
 "use strict";
 
+const addTax = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+
+const addVAT = addTax(0.23);
+
+console.log(addVAT(100));
+
 const greet = function (greeting) {
   return function (name) {
     console.log(`${greeting} ${name}`);
