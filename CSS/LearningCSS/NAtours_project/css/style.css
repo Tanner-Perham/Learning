@@ -49,14 +49,16 @@ body {
 
 .text-box {
   position: absolute;
-  top: 40%;
+  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .heading-primary {
   color: white;
   text-transform: uppercase;
+  margin-bottom: 10px;
 }
 
 .heading-primary-main {
@@ -74,6 +76,7 @@ body {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 17.4px;
+  margin-bottom: 60px;
 
   animation-name: moveInRight;
   animation-duration: 2.5s;
@@ -108,4 +111,66 @@ body {
     opacity: 1;
     transform: translateX(0);
   }
+}
+
+@keyframes moveInBottom {
+  0% {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.btn:link,
+.btn:visited {
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 40px;
+  display: inline-block;
+  border-radius: 200px;
+  transition: all 0.2s;
+  position: relative;
+
+  animation: moveInBottom 2s;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.btn:active {
+  transform: translateY(-1px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+.btn-white {
+  background-color: white;
+  color: #777;
+}
+
+.btn::after {
+  content: "";
+  display: inline-block;
+  height: 100%;
+  width: 100%;
+  border-radius: 200px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  transition: all 1s;
+}
+
+.btn-white::after {
+  background-color: white;
+  color: #777;
+}
+
+.btn:hover::after {
+  transform: scaleX(1.2) scaleY(1.4);
+  opacity: 0;
 }
