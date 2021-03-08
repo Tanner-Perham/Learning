@@ -1,0 +1,93 @@
+/* COLOR PALETTE */
+
+/* CSS HSL */
+--rajah: hsla(30, 99%, 67%, 1);
+--van-dyke-brown: hsla(17, 40%, 29%, 1);
+--caput-mortuum: hsla(11, 50%, 23%, 1);
+--mandarin: hsla(21, 71%, 56%, 1);
+--macaroni-and-cheese: hsla(28, 98%, 77%, 1);
+--yellow-orange: hsla(33, 92%, 64%, 1);
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: hsla(28, 98%, 77%, 1);
+  font-family: "Libre Baskerville", serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.7;
+  color: hsla(11, 50%, 23%, 1);
+  padding: 30px;
+
+  animation: fadeIn 3s;
+}
+
+.header {
+  height: 91vh;
+  background-image: linear-gradient(
+      to top,
+      hsla(21, 71%, 56%, 0.7),
+      hsla(28, 98%, 77%, 0.7)
+    ),
+    linear-gradient(
+      to top right,
+      hsla(0, 0%, 0%, 0.5),
+      hsla(17, 40%, 35%, 0.678)
+    ),
+    url("../img/dune_texture.jpg");
+  background-size: cover;
+  background-position: top;
+  box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.349);
+  position: relative;
+  border-radius: 20px;
+}
+
+.text-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  animation: fadeIn 2s;
+}
+
+.heading-primary-main {
+  display: block;
+  text-transform: uppercase;
+  font-size: 120px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: 20px;
+  border-top: solid 2px hsla(11, 50%, 23%, 1);
+  border-bottom: solid 2px hsla(11, 50%, 23%, 1);
+}
+
+.heading-primary-author {
+  display: block;
+  text-transform: uppercase;
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 20px;
+  padding-bottom: 5px;
+}
+
+.heading-primary-byline {
+  display: block;
+  padding-top: 10px;
+  font-size: 15px;
+  letter-spacing: 5px;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
