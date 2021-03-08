@@ -29,6 +29,10 @@ body {
   position: relative;
 
   clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%);
+
+  animation-name: fadeIn;
+  animation-duration: 2s;
+  animation-timing-function: ease;
 }
 
 .logo-box {
@@ -39,6 +43,8 @@ body {
 
 .logo {
   height: 35px;
+
+  animation: fadeIn 3s;
 }
 
 .text-box {
@@ -58,6 +64,9 @@ body {
   font-size: 60px;
   font-weight: 400;
   letter-spacing: 35px;
+
+  animation-name: moveInLeft;
+  animation-duration: 2.5s;
 }
 
 .heading-primary-sub {
@@ -65,4 +74,38 @@ body {
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 17.4px;
+
+  animation-name: moveInRight;
+  animation-duration: 2.5s;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(100px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
