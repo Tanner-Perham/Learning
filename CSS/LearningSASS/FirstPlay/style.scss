@@ -1,0 +1,39 @@
+// Color Theme profile
+
+$primaryColor: #607d8b;
+$secondaryColor: #90a4ae;
+$backgroundColor: #cfd8dc;
+$textColor: Black;
+$lineColor: #37474f;
+
+body {
+  background-color: $backgroundColor;
+  font-family: sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  text-align: left;
+  //   Can nest rules to drill down on elements
+  .header {
+    background-color: $primaryColor;
+    text-align: center;
+  }
+
+  .section {
+    background-color: $secondaryColor;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    h2 {
+      position: absolute;
+      height: 100%;
+      width: 20%;
+      left: 0%;
+      padding-left: 5px;
+    }
+    p {
+      padding-left: 21%;
+    }
+  }
+}
