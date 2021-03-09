@@ -30,7 +30,7 @@ body {
   height: 91vh;
   background-image: linear-gradient(
       to top,
-      hsla(21, 71%, 56%, 0.7),
+      hsla(21, 71%, 50%, 0.747),
       hsla(28, 98%, 77%, 0.7)
     ),
     linear-gradient(
@@ -44,6 +44,23 @@ body {
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.349);
   position: relative;
   border-radius: 5px;
+  overflow: hidden;
+}
+.sandworm {
+  height: 91vh;
+  width: 100%;
+  position: relative;
+  background-image: linear-gradient(
+      to top left,
+      rgba(255, 255, 255, 0.301),
+      rgba(165, 165, 165, 0.171)
+    ),
+    url("../img/sandworm.png");
+  background-size: cover;
+  background-position: top;
+  opacity: 0.65;
+  transform: scale(1.1);
+  filter: blur(8px);
 }
 
 .text-box {
