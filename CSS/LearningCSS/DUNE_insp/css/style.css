@@ -43,7 +43,7 @@ body {
   background-position: top;
   box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.349);
   position: relative;
-  border-radius: 20px;
+  border-radius: 5px;
 }
 
 .text-box {
