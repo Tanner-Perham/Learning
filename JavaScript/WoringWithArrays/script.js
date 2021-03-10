@@ -74,3 +74,75 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+/*
+for (const movement of movements) {
+  if (movement > 0) {
+    console.log(`You deposited \$${movement}`);
+  } else if (movement < 0) {
+    console.log(`You withdrew \$${movement * -1}`);
+  }
+}
+
+console.log(`---------------------------`);
+
+movements.forEach(function (movement) {
+  if (movement > 0) {
+    console.log(`You deposited \$${movement}`);
+  } else if (movement < 0) {
+    console.log(`You withdrew \$${movement * -1}`);
+  }
+});
+
+console.log(`---------------------------`);
+
+const accountReport = function (movement) {
+  if (movement > 0) {
+    console.log(`You deposited \$${movement}`);
+  } else if (movement < 0) {
+    console.log(`You withdrew \$${movement * -1}`);
+  }
+};
+
+movements.forEach(accountReport);
+
+console.log(`---------------------------`);
+
+movements.forEach(function (movement, i, array) {
+  if (movement > 0) {
+    console.log(`Movement ${i + 1}: You deposited \$${movement}`);
+  } else if (movement < 0) {
+    console.log(`Movement ${i + 1}: You withdrew \$${movement * -1}`);
+  }
+});
+
+console.log(`.forEach() also works with Maps and Sets`);
+
+currencies.forEach(function (value, key, map) {
+  console.log(`${key}: ${value}`);
+});
+
+const currenciesSet = new Set(['USD', 'GBP', 'USD', 'USD', 'EUR', 'EUR']);
+
+currenciesSet.forEach(function (value, key, set) {
+  console.log(`${key}: ${value}`); // Returns key identical to value
+});
+*/
+
+/*
+let arr = ['a', 'b', 'c', 'd', 'e'];
+
+// SLICE - retrieve range of elements from array
+console.log(arr.slice(2));
+console.log(arr.slice(2, 4));
+// Same array:
+console.log(arr.slice());
+
+// SPLICE - does mutate original array
+console.log(arr.splice(2));
+console.log(arr);
+
+arr = ['a', 'b', 'c', 'd', 'e'];
+// REVERSE
+console.log(arr.reverse());
+*/
