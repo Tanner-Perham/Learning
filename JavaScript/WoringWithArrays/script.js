@@ -74,6 +74,40 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+
+const deposits = movements.filter(mov => mov > 0);
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(deposits);
+console.log(withdrawals);
+
+console.log(movements.reduce((acc, cur) => acc + cur));
+
+const calcPrintBalance = function (movements) {
+  const balance = movements.reduce((acc, cur) => acc + cur, 0);
+
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcPrintBalance(movements);
+
+const findMaxMovement = function (movements) {
+  const maxMovement = movements.reduce((acc, cur) =>
+    cur > acc ? (acc = cur) : (acc = acc)
+  );
+  return maxMovement;
+};
+
+const findMinMovement = function (movements) {
+  const minMovement = movements.reduce((acc, cur) =>
+    cur < acc ? (acc = cur) : (acc = acc)
+  );
+  return minMovement;
+};
+
+console.log(findMaxMovement(movements));
+console.log(findMinMovement(movements));
+
+/*
 containerMovements.innerHTML = '';
 
 movements.forEach((value, i) => {
@@ -87,6 +121,8 @@ movements.forEach((value, i) => {
 
   containerMovements.insertAdjacentHTML('afterbegin', html);
 });
+*/
+
 /*
 const getUsername = function (account) {
   account.username = account.owner
