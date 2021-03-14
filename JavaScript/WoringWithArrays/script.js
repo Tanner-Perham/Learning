@@ -130,7 +130,6 @@ checkDogs(testData1.julia, testData1.kate);
 checkDogs(testData2.julia, testData2.kate);
 */
 
-/*
 const deposits = movements.filter(mov => mov > 0);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(deposits);
@@ -146,6 +145,28 @@ const calcPrintBalance = function (movements) {
 
 calcPrintBalance(movements);
 
+const calcSummary = function (movements) {
+  const summary = new Map();
+  const deposits = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov);
+  const withdrawals = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov);
+  const interestRate = 0.003;
+  summary['in'] = deposits;
+  summary['out'] = withdrawals;
+  summary['interest'] = (deposits + withdrawals) * interestRate;
+  return summary;
+};
+const printSummary = function (summary) {
+  labelSumIn.textContent = `${summary.in}€`;
+  labelSumOut.textContent = `${summary.out}€`;
+  labelSumInterest.textContent = `${summary.interest}€`;
+};
+
+printSummary(calcSummary(movements));
+
 const findMaxMovement = function (movements) {
   const maxMovement = movements.reduce((acc, cur) =>
     cur > acc ? (acc = cur) : (acc = acc)
@@ -160,11 +181,9 @@ const findMinMovement = function (movements) {
   return minMovement;
 };
 
-console.log(findMaxMovement(movements));
-console.log(findMinMovement(movements));
-*/
+// console.log(findMaxMovement(movements));
+// console.log(findMinMovement(movements));
 
-/*
 containerMovements.innerHTML = '';
 
 movements.forEach((value, i) => {
@@ -178,9 +197,7 @@ movements.forEach((value, i) => {
 
   containerMovements.insertAdjacentHTML('afterbegin', html);
 });
-*/
 
-/*
 const getUsername = function (account) {
   account.username = account.owner
     ?.split(' ')
@@ -189,8 +206,7 @@ const getUsername = function (account) {
 };
 
 accounts.forEach(getUsername);
-console.log(account3);
-*/
+// console.log(account3);
 
 /*
 const eurToUsd = 1.1;
