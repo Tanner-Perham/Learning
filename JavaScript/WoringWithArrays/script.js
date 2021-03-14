@@ -75,12 +75,19 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
-// Coding Challenge #2
+// Coding Challenge #2 + 3
 
 const challenge2 = {
   testData1: [5, 2, 4, 1, 15, 8, 3],
   testData2: [16, 6, 10, 5, 6, 1, 4],
 };
+
+const calcAverageHumanAgeArr = ages =>
+  ages
+    .map(age => (age > 2 ? 16 + age * 4 : age * 2))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+console.log(calcAverageHumanAgeArr(challenge2.testData1));
 
 const calcAverageHumanAge = function (ages) {
   const humanAges = ages.map(age => (age > 2 ? 16 + age * 4 : age * 2));
@@ -90,7 +97,7 @@ const calcAverageHumanAge = function (ages) {
   return averageHumanAge;
 };
 
-console.log(calcAverageHumanAge(challenge2.testData2));
+console.log(calcAverageHumanAge(challenge2.testData1));
 
 // Coding Challenge #1
 
