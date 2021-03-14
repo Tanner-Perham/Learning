@@ -161,7 +161,7 @@ const calcSummary = function (movements) {
 };
 const printSummary = function (summary) {
   labelSumIn.textContent = `${summary.in}€`;
-  labelSumOut.textContent = `${summary.out}€`;
+  labelSumOut.textContent = `${Math.abs(summary.out)}€`;
   labelSumInterest.textContent = `${summary.interest}€`;
 };
 
