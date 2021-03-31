@@ -75,6 +75,39 @@ const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
 
+// Event handler
+let currentAccount;
+
+btnLogin.addEventListener('click', e => {
+  e.preventDefault();
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    console.log(`LOGIN`);
+    // Display UI and welcome message
+    labelWelcome.textContent = `Welcome back, ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    // Reset username & pin inputs
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+    // Display movements
+    displayMovements(currentAccount.movements);
+    // Display balance
+    calcPrintBalance(currentAccount.movements);
+    // Display summary
+    calcSummary(currentAccount);
+  }
+});
+
+// Implementing log-in
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+
 // Coding Challenge #2 + 3
 
 const challenge2 = {
@@ -98,6 +131,48 @@ const calcAverageHumanAge = function (ages) {
 };
 
 console.log(calcAverageHumanAge(challenge2.testData1));
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  console.log(amount, receiverAcc);
+  if (checkValidTransfer(currentAccount, receiverAcc, amount)) {
+    transfer(currentAccount, receiverAcc, amount);
+    inputTransferAmount.blur();
+    inputTransferTo.blur();
+    console.log(currentAccount, receiverAcc);
+    // Display movements
+    displayMovements(currentAccount.movements);
+    // Display balance
+    calcPrintBalance(currentAccount.movements);
+    // Display summary
+    calcSummary(currentAccount);
+    // Clear input boxes
+    inputTransferTo.value = inputTransferAmount.value = '';
+  }
+});
+
+const checkValidTransfer = function (senderAccount, receiverAccount, amount) {
+  const senderCurrentBalance = senderAccount.movements.reduce(
+    (acc, cur) => acc + cur,
+    0
+  );
+  if (
+    amount <= senderCurrentBalance &&
+    amount > 0 &&
+    senderAccount !== receiverAccount
+  )
+    return true;
+  else return false;
+};
+
+const transfer = function (senderAccount, receiverAccount, amount) {
+  senderAccount.movements.push(amount * -1);
+  receiverAccount.movements.push(amount);
+};
 
 // Coding Challenge #1
 
@@ -150,29 +225,27 @@ const calcPrintBalance = function (movements) {
   labelBalance.textContent = `${balance} EUR`;
 };
 
-calcPrintBalance(movements);
+// calcPrintBalance(movements);
 
-const calcSummary = function (movements) {
+const calcSummary = function (acc) {
   const summary = new Map();
-  const deposits = movements
+  const deposits = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov);
-  const withdrawals = movements
+  const withdrawals = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov);
-  const interestRate = 0.003;
+  const interestRate = acc.interestRate;
   summary['in'] = deposits;
   summary['out'] = withdrawals;
   summary['interest'] = (deposits + withdrawals) * interestRate;
-  return summary;
-};
-const printSummary = function (summary) {
+  //  Display summary components
   labelSumIn.textContent = `${summary.in}€`;
   labelSumOut.textContent = `${Math.abs(summary.out)}€`;
   labelSumInterest.textContent = `${summary.interest}€`;
 };
 
-printSummary(calcSummary(movements));
+// printSummary(calcSummary(movements));
 
 const findMaxMovement = function (movements) {
   const maxMovement = movements.reduce((acc, cur) =>
@@ -191,19 +264,21 @@ const findMinMovement = function (movements) {
 // console.log(findMaxMovement(movements));
 // console.log(findMinMovement(movements));
 
-containerMovements.innerHTML = '';
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
 
-movements.forEach((value, i) => {
-  const type = value > 0 ? 'deposit' : 'withdrawal';
-  const html = `
+  movements.forEach((value, i) => {
+    const type = value > 0 ? 'deposit' : 'withdrawal';
+    const html = `
   <div class="movements__row">
 <div class="movements__type movements__type--${type}">${i + 1} ${type}</div>
 <div class="movements__value">${value}</div>
 </div>
 `;
 
-  containerMovements.insertAdjacentHTML('afterbegin', html);
-});
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
 
 const getUsername = function (account) {
   account.username = account.owner
